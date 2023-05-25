@@ -39,8 +39,6 @@ try:
 except URLError as e:
   streamlit.error()
 
-streamlit.stop()
-
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
@@ -57,6 +55,7 @@ def get_fruit_load_list():
     my_data_rows = get_fruit_load_list()
     streamlit.dataframe(my_data_rows)
 
+streamlit.stop()
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit)
 
